@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vínculo familiar y riesgo de deserción escolar</title>
+<style>
+:root{--bg:#f3f5f2;--sf:#fff;--tx:#1d2a27;--mt:#5d6b67;--ac:#1f6f66;--ac2:#e9f2f0;--bd:#d5ddd9;--lo:#2e7d4f;--md:#b9801a;--hi:#b23a3a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a18;--sf:#1a2421;--tx:#e6eeeb;--mt:#9aaba6;--ac:#5cc2b5;--ac2:#22322e;--bd:#2f3f3b;--lo:#5fc088;--md:#e0a940;--hi:#e46f6f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121a18;--sf:#1a2421;--tx:#e6eeeb;--mt:#9aaba6;--ac:#5cc2b5;--ac2:#22322e;--bd:#2f3f3b;--lo:#5fc088;--md:#e0a940;--hi:#e46f6f;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Source Serif 4",Georgia,serif}
+.w{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font:700 1.7rem/1.2 "Source Sans 3",system-ui,sans-serif;margin:8px 0}
+h2{font:700 1.15rem/1.3 "Source Sans 3",system-ui,sans-serif;margin:0 0 4px}
+.sub,.hint{color:var(--mt);font-size:.92rem}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:16px 0}
+.dim{font:600 .95rem "Source Sans 3",system-ui,sans-serif;color:var(--ac);margin:18px 0 6px;border-bottom:1px solid var(--bd);padding-bottom:4px}
+.q{padding:10px 0;border-bottom:1px solid var(--bd)}
+.q:last-child{border-bottom:0}
+.q p{margin:0 0 8px}
+.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.opts label{display:block}
+.opts input{position:absolute;opacity:0}
+.opts span{display:block;text-align:center;padding:7px 2px;border:1px solid var(--bd);border-radius:8px;font:.78rem/1.2 "Source Sans 3",system-ui,sans-serif;cursor:pointer;background:var(--bg)}
+.opts input:checked+span{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.opts input:focus-visible+span{outline:2px solid var(--ac);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+label.f{display:block;font:600 .85rem "Source Sans 3",system-ui,sans-serif;margin-bottom:8px}
+input[type=text],input[type=number],select{width:100%;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:1rem system-ui,sans-serif;margin-top:3px}
+button{font:600 1rem "Source Sans 3",system-ui,sans-serif;border-radius:10px;padding:12px 18px;border:1px solid var(--ac);cursor:pointer}
+.pri{background:var(--ac);color:var(--bg)}.sec{background:transparent;color:var(--ac)}
+.err{color:var(--hi);font:600 .9rem system-ui,sans-serif;margin:8px 0}
+.bar{height:10px;background:var(--ac2);border-radius:6px;overflow:hidden;margin:3px 0 10px}
+.bar i{display:block;height:100%}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font:700 .85rem system-ui,sans-serif;color:#fff}
+.meter{font:700 2rem "Source Sans 3",system-ui,sans-serif}
+.sum{border-left:4px solid var(--ac);background:var(--ac2)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font:.9rem system-ui,sans-serif}
+td,th{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+#rep{display:none}
+@media print{body{background:#fff;color:#000}.noprint{display:none!important}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="w">
+<div class="noprint" id="form">
+<h1>Vínculo familiar y riesgo de deserción escolar</h1>
+<p class="sub">Cuestionario para niñas, niños y adolescentes de 6 a 14 años. En menores de 10 años, el evaluador lee las preguntas en voz alta. Dura unos 10 minutos y genera un informe clínico y un resumen automáticos.</p>
+
+<div class="card">
+<h2>Datos básicos</h2>
+<div class="row">
+<label class="f">Iniciales o código<input type="text" id="cod" placeholder="Ej.: M.R."></label>
+<label class="f">Edad<input type="number" id="edad" min="6" max="14"></label>
+<label class="f">Curso<input type="text" id="curso" placeholder="Ej.: 2.º medio"></label>
+<label class="f">Evaluador/a (opcional)<input type="text" id="eva"></label>
+</div>
+<div class="row">
+<label class="f">Figura 1 (quién es)<input type="text" id="f1" value="Madre"></label>
+<label class="f">Figura 2 (quién es)<input type="text" id="f2" value="Padre"></label>
+</div>
+<label class="f"><input type="checkbox" id="no2" style="width:auto"> No hay una segunda figura parental o cuidadora</label>
+<p class="hint">Responde pensando en cómo ha sido la relación en el último año. No hay respuestas buenas ni malas.</p>
+</div>
+
+<div id="items"></div>
+<div class="err" id="err"></div>
+<div class="acts"><button class="pri" id="go">Generar informe</button><button class="sec" id="demo">Rellenar con ejemplo</button></div>
+<p class="hint">Instrumento de tamizaje: no diagnostica. Sus resultados deben ser interpretados por un profesional.</p>
+</div>
+
+<div id="rep">
+<div class="acts noprint"><button class="pri" id="pr">Imprimir o guardar PDF</button><button class="sec" id="cp">Copiar texto</button><button class="sec" id="back">Volver al test</button></div>
+<div id="out"></div>
+</div>
+</div>
+
+<script>
+var OPT=["Nunca","A veces","A menudo","Siempre"];
+var DIMS=[
+{k:"A",n:"Afecto",it:[["Me da abrazos, besos o me dice cosas cariñosas.",0],["Me escucha cuando le cuento algo.",0],["Me pregunta cómo me siento.",0],["Me hace sentir querido/a y que soy importante.",0],["Está enojado/a o lejos de mí, como si no le importara.",1]]},
+{k:"C",n:"Cuidado",it:[["Sabe dónde estoy y con quién estoy.",0],["Se preocupa de que coma bien, duerma y esté sano/a.",0],["Me ayuda con las tareas y me pregunta cómo me fue en el colegio.",0],["Está ahí cuando lo/la necesito.",0],["Me quedo solo/a, o tengo que cuidarme o cuidar a otros sin que me corresponda.",1]]},
+{k:"L",n:"Límites",it:[["Sé cuáles son las reglas de la casa.",0],["Si dice que habrá una consecuencia, la cumple.",0],["Me explica por qué hay reglas.",0],["Lo que hoy no se puede, mañana tampoco se puede.",0],["Me castiga con gritos o me hace sentir mal, y no sé cuándo va a pasar.",1]]}
+];
+var ESC=["Este mes he faltado al colegio sin estar enfermo/a.","He repetido curso o me han dicho que podría repetir.","Siento que ir al colegio no me sirve para nada.","Me cuesta poner atención o hacer las tareas.","He pensado en dejar de ir al colegio.","Me siento solo/a o que no encajo en mi colegio."];
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function qhtml(name,text){var h='<div class="q"><p>'+text+'</p><div class="opts">';for(var v=0;v<4;v++)h+='<label><input type="radio" name="'+name+'" value="'+v+'"><span>'+OPT[v]+'</span></label>';return h+'</div></div>'}
+function build(){
+var h="";
+[1,2].forEach(function(f){
+h+='<div class="card" id="fig'+f+'"><h2 class="figt">Figura '+f+'</h2>';
+DIMS.forEach(function(d){h+='<div class="dim">'+d.n+'</div>';d.it.forEach(function(it,i){h+=qhtml("p"+f+d.k+i,it[0])})});
+h+='</div>'});
+h+='<div class="card"><h2>Vida escolar</h2>';
+ESC.forEach(function(t,i){h+=qhtml("e"+i,t)});
+$("items").innerHTML=h+'</div>';
+}
+build();
+function names(){return[$("f1").value.trim()||"Figura 1",$("no2").checked?null:($("f2").value.trim()||"Figura 2")]}
+function sync(){var n=names();document.querySelectorAll(".figt").forEach(function(e,i){e.textContent="Sobre "+(n[i]?"tu "+n[i].toLowerCase():"—")+" (figura "+(i+1)+")"});$("fig2").style.display=n[1]?"block":"none"}
+["f1","f2","no2"].forEach(function(i){$(i).addEventListener("input",sync)});sync();
+function val(n){var e=document.querySelector('input[name="'+n+'"]:checked');return e?+e.value:null}
+function score(f){
+var res={},miss=0,tot=0;
+DIMS.forEach(function(d){var s=0;d.it.forEach(function(it,i){var v=val("p"+f+d.k+i);if(v===null){miss++;return}s+=it[1]?3-v:v});res[d.k]=s;tot+=s});
+return{r:res,miss:miss,pct:{A:res.A/15*100,C:res.C/15*100,L:res.L/15*100}}}
+function lvl(p){return p<45?["Bajo",0]:p<70?["Medio",1]:["Adecuado",2]}
+function col(i){return["var(--hi)","var(--md)","var(--lo)"][i]}
+function prof(p){var a=p.A>=60,l=p.L>=60;
+if(a&&l)return["Autoritativo (equilibrado)","Combina calidez con normas claras y consistentes; es el estilo que más se asocia a permanencia escolar."];
+if(a&&!l)return["Permisivo","Hay calidez, pero las normas son difusas o poco sostenidas; puede faltar estructura para sostener hábitos de estudio."];
+if(!a&&l)return["Autoritario","Hay normas firmes, pero con escasa calidez; el estudiante puede sentirse controlado y poco comprendido."];
+return["Negligente o desvinculado","Escasa calidez y escasa estructura; es el estilo con mayor asociación a desconexión escolar."]}
+function go(){
+var n=names(),two=!!n[1],miss=0;
+var S=[score(1)];if(two)S.push(score(2));
+S.forEach(function(s){miss+=s.miss});
+var E=[],em=0;ESC.forEach(function(t,i){var v=val("e"+i);if(v===null)em++;E.push(v||0)});
+if(miss+em>0){$("err").textContent="Faltan "+(miss+em)+" respuestas por contestar. Revisa las preguntas sin marcar.";return}
+$("err").textContent="";
+var esum=E.reduce(function(a,b){return a+b},0),epct=esum/18*100;
+var def=S.map(function(s){return(300-(s.pct.A+s.pct.C+s.pct.L))/3});
+var dpct=def.reduce(function(a,b){return a+b},0)/def.length;
+var risk=Math.round(0.5*dpct+0.5*epct),alert=E[4]>=2||(E[0]>=2&&E[2]>=2);
+var rl=risk<30?0:risk<55?1:2;if(alert&&rl<1)rl=1;
+var RN=["Bajo","Moderado","Alto"],RC=["var(--lo)","var(--md)","var(--hi)"];
+var cod=esc($("cod").value||"—"),fecha=new Date().toLocaleDateString("es");
+var o='<div class="card"><h1>Informe clínico de tamizaje</h1><p class="sub">Código: '+cod+' · Edad: '+esc($("edad").value||"—")+' · Curso: '+esc($("curso").value||"—")+' · Fecha: '+fecha+($("eva").value?' · Evaluador/a: '+esc($("eva").value):"")+'</p></div>';
+var sumTxt=[];
+o+='<div class="card"><h2>1. Resultados por figura parental</h2>';
+S.forEach(function(s,i){var nm=esc(n[i]),p=prof(s.pct);
+o+='<div class="dim">'+nm+' — perfil: '+p[0]+'</div><div class="scroll"><table><tr><th>Dimensión</th><th>Puntaje</th><th>%</th><th>Nivel</th></tr>';
+DIMS.forEach(function(d){var pc=s.pct[d.k],l=lvl(pc);o+='<tr><td>'+d.n+'</td><td>'+s.r[d.k]+'/15</td><td>'+Math.round(pc)+'%</td><td><span class="tag" style="background:'+col(l[1])+'">'+l[0]+'</span></td></tr>'});
+o+='</table></div><p>'+p[1]+'</p>';
+sumTxt.push(n[i]+": "+p[0]+" (afecto "+lvl(s.pct.A)[0].toLowerCase()+", cuidado "+lvl(s.pct.C)[0].toLowerCase()+", límites "+lvl(s.pct.L)[0].toLowerCase()+")")});
+o+='</div>';
+o+='<div class="card"><h2>2. Indicadores escolares</h2><div class="bar"><i style="width:'+epct+'%;background:'+(epct<30?col(2):epct<55?col(1):col(0))+'"></i></div><p>Puntaje: '+esum+'/18 ('+Math.round(epct)+'%).'+(E[4]>=2?' <b>Refiere pensamientos frecuentes de abandonar los estudios.</b>':'')+(E[0]>=2?' Ausentismo reciente relevante.':'')+'</p></div>';
+o+='<div class="card"><h2>3. Riesgo de deserción escolar</h2><div class="meter" style="color:'+RC[rl]+'">'+RN[rl]+' · '+risk+'/100</div><div class="bar"><i style="width:'+risk+'%;background:'+RC[rl]+'"></i></div><p class="hint">Índice = 50 % déficit de vínculo familiar (afecto, cuidado y límites) + 50 % indicadores escolares. Se sube a nivel moderado si hay alerta directa de abandono.</p></div>';
+var weak=[];S.forEach(function(s,i){DIMS.forEach(function(d){if(s.pct[d.k]<45)weak.push(d.n.toLowerCase()+" de "+n[i].toLowerCase())})});
+var cl="El perfil familiar "+(weak.length?"muestra déficits en "+weak.join(", ")+". ":"no muestra déficits marcados en afecto, cuidado ni límites. ")+(dpct>=40?"La baja contención familiar percibida puede actuar como factor de riesgo, al reducir el apoyo emocional y la supervisión académica. ":"El vínculo familiar percibido funciona, en general, como factor protector. ")+(epct>=40?"A nivel escolar hay señales de desenganche (ausentismo, desmotivación o aislamiento). ":"Los indicadores escolares son, por ahora, poco preocupantes. ")+(rl===2?"La combinación de ambos ámbitos configura un riesgo alto de deserción.":rl===1?"En conjunto se observa un riesgo moderado que conviene monitorear.":"En conjunto el riesgo es bajo.");
+if(two&&Math.abs(S[0].pct.A-S[1].pct.A)>=30)cl+=" Se observa una diferencia notable de afecto entre ambas figuras, lo que puede indicar que una de ellas es la principal fuente de apoyo.";
+o+='<div class="card"><h2>4. Interpretación clínica</h2><p>'+cl+'</p></div>';
+var rc=[];
+if(rl===2)rc.push("Entrevista individual prioritaria con orientación o psicología escolar en las próximas dos semanas.","Plan de retención personalizado y seguimiento de asistencia semanal.");
+if(rl===1)rc.push("Seguimiento por el equipo de orientación y revisión del test en 2 o 3 meses.");
+if(rl===0)rc.push("Mantener acciones de prevención universal y reevaluar según el contexto.");
+if(S.some(function(s){return s.pct.A<45}))rc.push("Entrevista con la familia para fortalecer la comunicación y la expresión de afecto.");
+if(S.some(function(s){return s.pct.L<45}))rc.push("Orientación parental en normas claras, consistentes y sin castigo humillante.");
+if(S.some(function(s){return s.pct.C<45}))rc.push("Explorar carga de responsabilidades y red de apoyo disponible; derivar a trabajo social si hay desprotección.");
+if(E[4]>=2)rc.push("Explorar en entrevista el significado de los pensamientos de abandono y descartar malestar emocional significativo.");
+o+='<div class="card"><h2>5. Recomendaciones</h2><ul>'+rc.map(function(r){return"<li>"+r+"</li>"}).join("")+'</ul></div>';
+var res="Riesgo de deserción "+RN[rl].toLowerCase()+" ("+risk+"/100). "+sumTxt.join(". ")+". Indicadores escolares: "+Math.round(epct)+"%."+(alert?" Alerta: señales directas de abandono.":"")+" Acción sugerida: "+rc[0]+".";
+o+='<div class="card sum"><h2>Resumen del informe</h2><p id="sumtxt">'+esc(res)+'</p></div>';
+o+='<p class="hint">Limitaciones: es un instrumento de tamizaje de autorreporte (en menores de 10 años, aplicado con apoyo del evaluador), con ítems y puntos de corte orientativos que no han sido validados estadísticamente. No reemplaza una evaluación clínica ni un diagnóstico.</p>';
+$("out").innerHTML=o;$("out")._t=$("out").innerText;
+$("form").style.display="none";$("rep").style.display="block";window.scrollTo(0,0)}
+$("go").onclick=go;
+$("back").onclick=function(){$("rep").style.display="none";$("form").style.display="block";window.scrollTo(0,0)};
+$("pr").onclick=function(){window.print()};
+$("cp").onclick=function(){var t=$("out").innerText;try{navigator.clipboard.writeText(t);$("cp").textContent="Copiado"}catch(e){$("cp").textContent="No se pudo copiar"}};
+$("demo").onclick=function(){document.querySelectorAll(".q").forEach(function(q){var r=q.querySelectorAll("input");r[Math.floor(Math.random()*4)].checked=true})};
+</script>
+</body>
+</html>
